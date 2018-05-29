@@ -410,3 +410,66 @@ div.table-caption {
   width: 500px;
 }
 
+/* COMPACT: Highlight child, maternal and paternal cells */
+#container-matrix.compact table#tbl-summary-matrix .highlight-child {
+  background-color: green;
+  border: 2px solid green;
+  color: black;
+  font-size: 1.4em;
+  font-weight: bold;
+
+  -webkit-transition: background-color 0.7s ease-out;
+  -moz-transition: background-color 0.7s ease-out;
+  -o-transition: background-color 0.7s ease-out;
+  transition: background-color 0.7s ease-out;
+}
+
+
+#container-matrix.compact table#tbl-summary-matrix td.highlight-child a {
+  color: black;
+}
+
+#container-matrix.compact table#tbl-summary-matrix th.highlight-mom > div > span {
+  border-bottom: 2px solid green;
+  color: green;
+}
+#container-matrix.compact table#tbl-summary-matrix th.highlight-mom-bff > div > span {
+  border-bottom: 2px solid green;
+}
+
+#container-matrix.compact .sticky-header .highlight-mom-sticky {
+  background-color: #EAEAEA;
+  border-top: 2px solid green;
+  border-left: 2px solid green;
+  border-right: 2px solid green;
+  color: #666666;
+}
+
+#container-matrix.compact table#tbl-summary-matrix th.highlight-dad {
+  border-top: 2px solid green;
+  border-bottom: 2px solid green;
+  border-right: 1px solid #ccc;
+  color: green;
+}
+
+#container-matrix.compact table#tbl-summary-matrix td.highlight-mom-cells {
+  border: none;
+  border-top: 2px solid green !important;
+  border-bottom: 2px solid green;
+  border-right: 1px solid #ccc;
+  background-color: #F7F7F7;
+  color: #EAEAEA;
+}
+
+#container-matrix.compact table#tbl-summary-matrix td.highlight-dad-cells {
+  border: none;
+  border-left: 2px solid green;
+  border-right: 2px solid green;
+  background-color: #F7F7F7;
+  color: #EAEAEA;
+}
+
+#container-matrix.compact table#tbl-summary-matrix td.highlight-mom-cells a,
+#container-matrix.compact table#tbl-summary-matrix td.highlight-dad-cells a {
+  color: #CCCCCC;
+}

@@ -63,6 +63,11 @@
           var momTh = $('#maternal-' + siblings.mom);
           momTh.addClass('highlight-mom');
 
+          // Add a class on the th before the mom
+          // This is used for the compact display.
+          var momBFFTh = $('#maternal-' + (siblings.mom-1));
+          momBFFTh.addClass('highlight-mom-bff');
+
           // For sticky header.
           var momThSticky = $('#maternal-' + siblings.mom + '-sticky');
           momThSticky.addClass('highlight-mom-sticky');
