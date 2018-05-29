@@ -32,11 +32,13 @@
 
   <?php print drupal_render($form['description']); ?>
 
-  <div id="container-matrix" class="<?php print $display_matrix; ?> paternal-bg">
+  <!-- Summary Matrix: # RILS per species combo -->
+  <div id="container-matrix" class="<?php print $display_matrix; ?> paternal-bg compact">
     <div class="table-caption horizontal-col">&nbsp;</div>
     <?php print drupal_render($form['summary_matrix']); ?>
   </div>
 
+  <!-- RIL Listing: Specific to a given species combo -->
   <?php if ($display_matrix == 'no-display') { ?>
     <div id="container-table">
       <div>

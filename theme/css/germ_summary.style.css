@@ -360,3 +360,53 @@ div.nav-link {
   width: 80px;
 }
 
+/* MATRIX: Support smaller screens */
+#container-matrix.compact table#tbl-summary-matrix {
+  width: auto;
+  table-layout: fixed;
+  border: 0;
+}
+#container-matrix.compact table#tbl-summary-matrix td {
+  width: 30px;
+}
+#container-matrix.compact table#tbl-summary-matrix td {
+  text-align: center;
+  padding: 10px 5px;
+  border: 1px solid #ccc;
+}
+#container-matrix.compact table#tbl-summary-matrix th,
+  #container-matrix.compact table.sticky-header th {
+  background-color: white;
+  color: #314355;
+  border: 0;
+}
+#container-matrix.compact table#tbl-summary-matrix thead th,
+#container-matrix.compact table.sticky-header thead th {
+  height: 90px;
+  white-space: nowrap;
+}
+#container-matrix.compact table#tbl-summary-matrix thead th > div,
+#container-matrix.compact table.sticky-header thead th > div {
+  -webkit-transform: translate(25px, 25px) rotate(315deg);
+          transform: translate(25px, 25px) rotate(315deg);
+  width: 30px;
+}
+#container-matrix.compact table#tbl-summary-matrix thead th > div > span,
+#container-matrix.compact table.sticky-header th > div > span {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+  width: 120px;
+  display: block
+}
+#container-matrix.compact table#tbl-summary-matrix tbody th {
+  padding: 0 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Move maternal header */
+div.table-caption {
+  padding-left: 250px;
+  display:block;
+  width: 500px;
+}
+
