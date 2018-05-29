@@ -8,24 +8,6 @@ div.horizontal-col {
   height: 25px;
 }
 
-div.table-caption {
-  background-color: #304356;
-  color: #FFFFFF;
-  font-size: 0.9em;
-}
-
-#container-matrix.full {
-  background-color: #304356;
-  border-right: 4px solid #304356;
-  border-bottom: 4px solid #304356;
-  padding-left: 25px;
-}
-
-div.paternal-bg {
-  background: url('../img/caption-paternal.gif') no-repeat left top;
-  background-position: 0 15%;
-}
-
 /* Summary Matrix Table */
 #container-matrix.full .sticky-header {
   background: #304356 url('../img/caption-parents.gif') no-repeat left top;
@@ -58,27 +40,47 @@ div.paternal-bg {
   padding: 0;
 }
 
+/* Style Maternal/paternal label */
+#container-matrix table#tbl-summary-matrix th#paternal-parent-label,
+  #container-matrix table#tbl-summary-matrix th#maternal-parent-label,
+  #container-matrix table#tbl-summary-matrix th {
+  border: 1px solid #304356;
+  background-color: #304356;
+  padding: 2px;
+}
+#container-matrix table#tbl-summary-matrix th#maternal-parent-label {
+  padding-left: 15px;
+}
+#container-matrix table#tbl-summary-matrix th#paternal-parent-label {
+  white-space: nowrap;
+  padding-top: 15px;
+  width: 25px;
+}
+#container-matrix table#tbl-summary-matrix th#paternal-parent-label > div {
+  -webkit-transform: translate(0px, 80px) rotate(-90deg);
+          transform: translate(0px, 80px) rotate(-90deg);
+  display: block;
+  width: 15px;
+}
 
 /* Style table headers */
-#container-matrix.full .sticky-header th,
-#container-matrix.full table#tbl-summary-matrix thead th {
+#container-matrix.full table#tbl-summary-matrix th.maternal-species {
   border: 1px solid #666666;
   border-left: 1px solid #F7F7F7;
   border-bottom: none;
 }
 
-#container-matrix.full table#tbl-summary-matrix tbody th {
+#container-matrix.full table#tbl-summary-matrix th.paternal-species {
   border: 1px solid #666666;
   border-top: 1px solid #F7F7F7;
   border-right: none;
 }
 
-#container-matrix.full .sticky-header th,
-#container-matrix.full table#tbl-summary-matrix th {
+#container-matrix.full table#tbl-summary-matrix th.maternal-species,
+#container-matrix.full table#tbl-summary-matrix th.paternal-species {
   background-color: #666666;
   color: #FFFFFF;
   font-style: italic;
-  font-size: 1.1em;
   margin: 0;
   padding: 20px 5px;
   text-align: center;
@@ -86,19 +88,25 @@ div.paternal-bg {
 }
 
 /* Style the empty cell in the top most corner */
-#container-matrix.full .sticky-header thead tr:first-child th:nth-child(1),
-#container-matrix.full table#tbl-summary-matrix thead tr:first-child th:nth-child(1) {
+#container-matrix.full table#tbl-summary-matrix th.maternal-species.paternal-species {
   background-color: #304356;
   border: 1px solid #304356;
 }
-
-#container-matrix.full .sticky-header thead tr:first-child th:nth-child(2),
-#container-matrix.full table#tbl-summary-matrix thead tr:first-child th:nth-child(2) {
+#container-matrix.full table#tbl-summary-matrix tbody tr:first-child th:nth-child(3) {
   border-left: 1px solid #304356;
 }
-
-#container-matrix.full table#tbl-summary-matrix tbody tr:first-child th {
+#container-matrix.full table#tbl-summary-matrix tbody tr:nth-child(2) th:nth-child(2) {
   border-top: 1px solid #304356;
+}
+
+/* Outside table border */
+#container-matrix.full table#tbl-summary-matrix th:last-child,
+#container-matrix.full table#tbl-summary-matrix td:last-child {
+  border-right: 3px solid #304356;
+}
+#container-matrix.full table#tbl-summary-matrix tbody tr:last-child th,
+#container-matrix.full table#tbl-summary-matrix tbody tr:last-child td {
+  border-bottom: 3px solid #304356;
 }
 
 /* Style table data cell */
@@ -108,7 +116,6 @@ div.paternal-bg {
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #CCCCCC;
   cursor: pointer;
-  font-size: 1.3em;
   font-family: Sans-serif;
   text-align: center;
   padding: 0;
@@ -147,7 +154,7 @@ div.paternal-bg {
   color: #000000;
 }
 
-#container-matrix.fulltable#tbl-summary-matrix th.highlight-mom {
+#container-matrix.full table#tbl-summary-matrix th.highlight-mom {
   background-color: #EAEAEA;
   border-top: 1px solid green;
   border-left: 1px solid green;
@@ -155,15 +162,7 @@ div.paternal-bg {
   color: #666666;
 }
 
-#container-matrix.full.sticky-header .highlight-mom-sticky {
-  background-color: #EAEAEA;
-  border-top: 1px solid green;
-  border-left: 1px solid green;
-  border-right: 1px solid green;
-  color: #666666;
-}
-
-#container-matrix.fulltable#tbl-summary-matrix th.highlight-dad {
+#container-matrix.full table#tbl-summary-matrix th.highlight-dad {
   background-color: #EAEAEA;
   border-top: 1px solid green;
   border-left: 1px solid green;
@@ -171,7 +170,7 @@ div.paternal-bg {
   color: #666666;
 }
 
-#container-matrix.fulltable#tbl-summary-matrix td.highlight-mom-cells {
+#container-matrix.full table#tbl-summary-matrix td.highlight-mom-cells {
   border: none;
   border-top: 1px solid green;
   border-bottom: 1px solid green;
@@ -179,7 +178,7 @@ div.paternal-bg {
   color: #EAEAEA;
 }
 
-#container-matrix.fulltable#tbl-summary-matrix td.highlight-dad-cells {
+#container-matrix.full table#tbl-summary-matrix td.highlight-dad-cells {
   border: none;
   border-left: 1px solid green;
   border-right: 1px solid green;
@@ -187,8 +186,8 @@ div.paternal-bg {
   color: #EAEAEA;
 }
 
-#container-matrix.fulltable#tbl-summary-matrix td.highlight-mom-cells a,
-#container-matrix.fulltable#tbl-summary-matrix td.highlight-dad-cells a {
+#container-matrix.full table#tbl-summary-matrix td.highlight-mom-cells a,
+#container-matrix.full table#tbl-summary-matrix td.highlight-dad-cells a {
   color: #CCCCCC;
 }
 
@@ -360,11 +359,12 @@ div.nav-link {
   width: 80px;
 }
 
-/* MATRIX: Support smaller screens */
+/* COMPACT: Matrix Support smaller screens */
 #container-matrix.compact table#tbl-summary-matrix {
   width: auto;
   table-layout: fixed;
   border: 0;
+  border-collapse: collapse;
 }
 #container-matrix.compact table#tbl-summary-matrix td {
   width: 30px;
@@ -374,41 +374,74 @@ div.nav-link {
   padding: 10px 5px;
   border: 1px solid #ccc;
 }
-#container-matrix.compact table#tbl-summary-matrix th,
-  #container-matrix.compact table.sticky-header th {
+#container-matrix.compact table#tbl-summary-matrix th.maternal-species {
   background-color: white;
   color: #314355;
   border: 0;
 }
-#container-matrix.compact table#tbl-summary-matrix thead th,
-#container-matrix.compact table.sticky-header thead th {
+#container-matrix.compact table#tbl-summary-matrix th.maternal-species {
   height: 90px;
   white-space: nowrap;
+  border: 1px solid white;
+  border-bottom: 1px solid #ccc;
 }
-#container-matrix.compact table#tbl-summary-matrix thead th > div,
-#container-matrix.compact table.sticky-header thead th > div {
-  -webkit-transform: translate(25px, 25px) rotate(315deg);
-          transform: translate(25px, 25px) rotate(315deg);
+#container-matrix.compact table#tbl-summary-matrix th.maternal-species > div {
+  -webkit-transform: translate(24px, 58px) rotate(315deg);
+          transform: translate(24px, 58px) rotate(315deg);
   width: 30px;
 }
-#container-matrix.compact table#tbl-summary-matrix thead th > div > span,
+#container-matrix.compact table#tbl-summary-matrix th.maternal-species > div > span,
 #container-matrix.compact table.sticky-header th > div > span {
   border-bottom: 1px solid #ccc;
   padding: 5px 10px;
-  width: 120px;
+  width: 112px;
   display: block
 }
-#container-matrix.compact table#tbl-summary-matrix tbody th {
-  padding: 0 10px;
-  border-bottom: 1px solid #ccc;
+#container-matrix.compact table#tbl-summary-matrix tbody th.paternal-species {
+  padding: 13px 10px 10px;
+  background-color: white;
+  color: #314355;
+  border: 1px solid #ccc;
 }
 
-/* Move maternal header */
-div.table-caption {
-  padding-left: 250px;
-  display:block;
-  width: 500px;
+/* COMPACT: Specific handling for the corner cell */
+#container-matrix.compact table#tbl-summary-matrix th.maternal-species.paternal-species > div {
+  -webkit-transform: translate(87px, 60px) rotate(315deg);
+          transform: translate(87px, 60px) rotate(315deg);
+  width: 30px;
 }
+#container-matrix.compact table#tbl-summary-matrix th.maternal-species.paternal-species {
+  border: 1px solid white;
+  border-bottom: 1px solid #ccc;
+  padding: 0 10px;
+}
+
+/* COMPACT: Extend the maternal label */
+#container-matrix.compact table#tbl-summary-matrix th#maternal-parent-label {
+  white-space: nowrap;
+  overflow: visible;
+}
+#container-matrix.compact table#tbl-summary-matrix th#maternal-parent-label > div {
+  position:absolute;
+  padding-left: 100px;
+  width: 434px;
+  background-color: #314355;
+  height: 24px;
+  margin-top: -12px;
+}
+
+/* COMPACT: Outside table border *
+#container-matrix.compact table#tbl-summary-matrix th:last-child > div > span {
+  border-bottom: 3px solid #304356;
+}
+#container-matrix.compact table#tbl-summary-matrix td:last-child {
+  border-right: 3px solid #304356;
+}
+#container-matrix.compact table#tbl-summary-matrix tbody tr:last-child th,
+#container-matrix.compact table#tbl-summary-matrix tbody tr:last-child td {
+  border-bottom: 3px solid #304356;
+}
+*/
 
 /* COMPACT: Highlight child, maternal and paternal cells */
 #container-matrix.compact table#tbl-summary-matrix .highlight-child {
@@ -445,7 +478,7 @@ div.table-caption {
   color: #666666;
 }
 
-#container-matrix.compact table#tbl-summary-matrix th.highlight-dad {
+#container-matrix.compact table#tbl-summary-matrix th.paternal-species.highlight-dad {
   border-top: 2px solid green;
   border-bottom: 2px solid green;
   border-right: 1px solid #ccc;

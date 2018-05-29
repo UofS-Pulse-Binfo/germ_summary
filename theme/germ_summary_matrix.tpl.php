@@ -33,8 +33,7 @@
   <?php print drupal_render($form['description']); ?>
 
   <!-- Summary Matrix: # RILS per species combo -->
-  <div id="container-matrix" class="<?php print $display_matrix; ?> paternal-bg compact">
-    <div class="table-caption horizontal-col">&nbsp;</div>
+  <div id="container-matrix" class="<?php print $display_matrix; ?> full">
     <?php print drupal_render($form['summary_matrix']); ?>
   </div>
 

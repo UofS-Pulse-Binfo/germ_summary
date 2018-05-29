@@ -124,7 +124,7 @@ function germ_summary_form($form, &$form_state) {
 
   // Get all species and use this to generate headers containing maternal and paternal species.
   $sql = "SELECT organism_id, species
-          FROM {organism} 
+          FROM {organism}
           WHERE genus = :genus ORDER BY species ASC";
 
   // Store the species name and use this to search for no of children
@@ -316,8 +316,51 @@ function germ_summary_form($form, &$form_state) {
     $i++;
   }
 
+  // Add in the maternal/paternal label headers.
+  $num_species = sizeof($arr_tbl_rows);
+  // 1. process header to indicate it's a header once moved into the body.
+  $arr_tbl_headers[0] = array('data' => '<div><span>&nbsp;</span></div>', 'header' => TRUE);
+  foreach ($arr_tbl_headers as $k => $arrv) {
+    $arr_tbl_headers[$k]['header'] = TRUE;
+    $arr_tbl_headers[$k]['class'][] = 'maternal-species';
+    if ($k === 0) { $arr_tbl_headers[$k]['id'] = 'maternal-0'; }
+  }
+  // 2. move current header into the rows
+  array_unshift($arr_tbl_rows, $arr_tbl_headers);
+  // 3. depfine the new header (maternal label)
+  $new_header = array(
+    //array('data' => '&nbsp;', 'header' => TRUE),
+    array('data' => '&nbsp;', 'header' => TRUE),
+    array(
+      'id' => 'maternal-parent-label',
+      'data' => '<div>Maternal Parent</div>',
+      'header' => TRUE,
+      'colspan' => $num_species),
+  );
+  // 4. Add Paternal parent label.
+  $paternal_label = array(
+     'data' => '<div>Paternal Parent</div>',
+     'header' => TRUE,
+     'rowspan' => $num_species,
+     'id' => 'paternal-parent-label',
+  );
+  array_unshift($arr_tbl_rows[1], $paternal_label);
+  // 5. Process the paternal species so we know what to style.
+  foreach ($arr_tbl_rows as $k => $arrv) {
+    if ($k === 1) {
+      $arr_tbl_rows[$k][1]['class'][] = 'paternal-species';
+    }
+    else {
+      $arr_tbl_rows[$k][0]['class'][] = 'paternal-species';
+    }
+  }
+  // 6. Add additional buffer to the header.
+  array_unshift($new_header, array('data' => '&nbsp;', 'header' => TRUE));
+  array_unshift($arr_tbl_rows[0], array('data' => '&nbsp;', 'header' => TRUE));
+
+
   // Create the matrix table.
-  $matrix = germ_summary_construct_table($arr_tbl_headers, $arr_tbl_rows, 'tbl-summary-matrix');
+  $matrix = germ_summary_construct_table($new_header, $arr_tbl_rows, 'tbl-summary-matrix');
 
   $form['summary_matrix'] = array(
     '#markup' => $matrix,
