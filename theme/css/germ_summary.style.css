@@ -41,12 +41,14 @@ div.horizontal-col {
 }
 
 /* Style Maternal/paternal label */
-#container-matrix table#tbl-summary-matrix th#paternal-parent-label,
-  #container-matrix table#tbl-summary-matrix th#maternal-parent-label,
-  #container-matrix table#tbl-summary-matrix th {
+#container-matrix.full table#tbl-summary-matrix th.paternal-label,
+#container-matrix.full table#tbl-summary-matrix th.maternal-label,
+#container-matrix.compact table#tbl-summary-matrix th.paternal-label,
+#container-matrix.compact table#tbl-summary-matrix th.maternal-label {
   border: 1px solid #304356;
   background-color: #304356;
   padding: 2px;
+  color: white;
 }
 #container-matrix table#tbl-summary-matrix th#maternal-parent-label {
   padding-left: 15px;
@@ -329,13 +331,6 @@ div.nav-link {
 }
 
 /* Style some table headers to be less noticeable */
-#container-matrix.full .sticky-header th.introgression,
-#container-matrix.full .sticky-header th.interspecific,
-#container-matrix.full .sticky-header th.sp-unknown,
-#container-matrix.full .sticky-header th.spp-mixture,
-#container-matrix.full .sticky-header th.sp,
-#container-matrix.full .sticky-header th.spp,
-
 #container-matrix.full table#tbl-summary-matrix th.introgression,
 #container-matrix.full table#tbl-summary-matrix th.interspecific,
 #container-matrix.full table#tbl-summary-matrix th.sp-unknown,
@@ -374,9 +369,11 @@ div.nav-link {
   padding: 10px 5px;
   border: 1px solid #ccc;
 }
-#container-matrix.compact table#tbl-summary-matrix th.maternal-species {
+#container-matrix.compact table#tbl-summary-matrix th {
   background-color: white;
   color: #314355;
+}
+#container-matrix.compact table#tbl-summary-matrix th.maternal-species {
   border: 0;
 }
 #container-matrix.compact table#tbl-summary-matrix th.maternal-species {
@@ -399,12 +396,10 @@ div.nav-link {
 }
 #container-matrix.compact table#tbl-summary-matrix tbody th.paternal-species {
   padding: 13px 10px 10px;
-  background-color: white;
-  color: #314355;
   border: 1px solid #ccc;
 }
 
-/* COMPACT: Specific handling for the corner cell */
+/* COMPACT: Specific handling for the corner cells */
 #container-matrix.compact table#tbl-summary-matrix th.maternal-species.paternal-species > div {
   -webkit-transform: translate(87px, 60px) rotate(315deg);
           transform: translate(87px, 60px) rotate(315deg);
@@ -424,7 +419,7 @@ div.nav-link {
 #container-matrix.compact table#tbl-summary-matrix th#maternal-parent-label > div {
   position:absolute;
   padding-left: 100px;
-  width: 434px;
+  width: 520px;
   background-color: #314355;
   height: 24px;
   margin-top: -12px;
@@ -442,6 +437,16 @@ div.nav-link {
   border-bottom: 3px solid #304356;
 }
 */
+
+/* COMPACT: Style some table headers to be less noticeable */
+#container-matrix.compact table#tbl-summary-matrix th.introgression,
+#container-matrix.compact table#tbl-summary-matrix th.interspecific,
+#container-matrix.compact table#tbl-summary-matrix th.sp-unknown,
+#container-matrix.compact table#tbl-summary-matrix th.spp-mixture,
+#container-matrix.compact table#tbl-summary-matrix th.sp,
+#container-matrix.compact table#tbl-summary-matrix th.spp {
+  color: #999999;
+}
 
 /* COMPACT: Highlight child, maternal and paternal cells */
 #container-matrix.compact table#tbl-summary-matrix .highlight-child {

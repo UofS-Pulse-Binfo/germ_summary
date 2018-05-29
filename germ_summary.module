@@ -152,7 +152,7 @@ function germ_summary_form($form, &$form_state) {
   // Move interspecific, introgression, spp., sp. to the end if present.
   foreach (array('interspecific','introgression','sp\.', 'spp\.') as $keyword) {
     // check to see if there is a key including the keyword.
-    $found_key = preg_grep('/(\W+|^)'.$keyword.'\W+/', $arr_species_dad);
+    $found_key = preg_grep('/(\W+|^)'.$keyword.'(\W+|$)/', $arr_species_dad);
     if ($found_key) {
       foreach ($found_key as $k => $v) {
         if (strstr($v, 'unknown')) {
@@ -319,7 +319,10 @@ function germ_summary_form($form, &$form_state) {
   // Add in the maternal/paternal label headers.
   $num_species = sizeof($arr_tbl_rows);
   // 1. process header to indicate it's a header once moved into the body.
-  $arr_tbl_headers[0] = array('data' => '<div><span>&nbsp;</span></div>', 'header' => TRUE);
+  $arr_tbl_headers[0] = array(
+    'data' => '<div><span>&nbsp;</span></div>',
+    'header' => TRUE,
+  );
   foreach ($arr_tbl_headers as $k => $arrv) {
     $arr_tbl_headers[$k]['header'] = TRUE;
     $arr_tbl_headers[$k]['class'][] = 'maternal-species';
@@ -329,13 +332,14 @@ function germ_summary_form($form, &$form_state) {
   array_unshift($arr_tbl_rows, $arr_tbl_headers);
   // 3. depfine the new header (maternal label)
   $new_header = array(
-    //array('data' => '&nbsp;', 'header' => TRUE),
-    array('data' => '&nbsp;', 'header' => TRUE),
+    array('data' => '&nbsp;', 'header' => TRUE, 'class' => array('maternal-label')),
     array(
       'id' => 'maternal-parent-label',
       'data' => '<div>Maternal Parent</div>',
       'header' => TRUE,
-      'colspan' => $num_species),
+      'colspan' => $num_species,
+      'class' => array('maternal-label'),
+    ),
   );
   // 4. Add Paternal parent label.
   $paternal_label = array(
@@ -343,6 +347,7 @@ function germ_summary_form($form, &$form_state) {
      'header' => TRUE,
      'rowspan' => $num_species,
      'id' => 'paternal-parent-label',
+     'class' => array('paternal-label'),
   );
   array_unshift($arr_tbl_rows[1], $paternal_label);
   // 5. Process the paternal species so we know what to style.
@@ -355,8 +360,8 @@ function germ_summary_form($form, &$form_state) {
     }
   }
   // 6. Add additional buffer to the header.
-  array_unshift($new_header, array('data' => '&nbsp;', 'header' => TRUE));
-  array_unshift($arr_tbl_rows[0], array('data' => '&nbsp;', 'header' => TRUE));
+  array_unshift($new_header, array('data' => '&nbsp;', 'header' => TRUE, 'class' => array('paternal-label')));
+  array_unshift($arr_tbl_rows[0], array('data' => '&nbsp;', 'header' => TRUE, 'class' => array('paternal-label')));
 
 
   // Create the matrix table.
